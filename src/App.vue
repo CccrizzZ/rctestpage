@@ -3,23 +3,20 @@
 	<div id="app">
 		<!-- <img alt="Vue logo" src="./assets/logo.png"> -->
 		<DripHub msg="ROBERTO CAVALLI"/>
-		<SideBar/>
-
-
+		<!--SideBar/-->
 	</div>
 
 </template>
 
-
 <script>
 	import DripHub from './components/DripHub.vue'
-	import SideBar from './components/SideBar.vue'
+	//import SideBar from './components/SideBar.vue'
 
 	export default {
 		name: 'App',
 		components: {
 			DripHub,
-			SideBar
+			//SideBar
 		}
 	}
 </script>

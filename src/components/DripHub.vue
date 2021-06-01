@@ -1,4 +1,3 @@
-
 <template>
 	<div class="page">
 
@@ -12,39 +11,47 @@
 
 					<vs-button id="centerbutton" transparent color="#ffffff">
 						<h3>2021 F/W COLLECTION</h3>
-		
 					</vs-button>
 					
 					<!-- fragrance dialog -->
-					<vs-button id="centerbutton" transparent color="#ffffff" @click="dialogactive=!dialogactive">
+					<vs-button id="centerbutton" transparent color="#ffffff" @click="activeDlgPerfume=!activeDlgPerfume">
 						<h3>SKIN : FRAGRANCE BY ROBERTO CAVALLI</h3>
 					</vs-button>
-					<vs-button id="centerbutton" transparent color="#ffffff" @click="dialogactive2=!dialogactive2">
+
+					<vs-button id="centerbutton" transparent color="#ffffff" @click="activeDlgVoices=!activeDlgVoices">
 						<h3>VOICES</h3>
 					</vs-button>
 
+
+          <router-view></router-view>
 
 
 					<div class="logs">
 
 						<!-- perfume dialog -->
-						<b-modal hide-footer hide-header class="model" id="modal-xl" size="xl" v-model="dialogactive">
+						<b-modal hide-footer hide-header class="model" id="modal-xl" size="xl" v-model="activeDlgPerfume">
 							<video-background id="perfume-video" :src="require('../assets/perfume.mp4')" :loop="true"></video-background>
-						
 							
 						</b-modal>
-
 						
 						<!-- voices dialog -->
-						<b-modal class="voices" hide-footer scrollable style="margin-top:20;" id="modal-xl" size="xl" v-model="dialogactive2">
+						<b-modal class="voices" hide-footer scrollable style="margin-top:20;" id="modal-xl" size="xl" v-model="activeDlgVoices">
 							<img src="../assets/0.jpg" alt="">
 							<img src="../assets/1.jpg" alt="">
 							<img src="../assets/2.jpg" alt="">
 							<img src="../assets/3.jpg" alt="">
 							<img src="../assets/4.jpg" alt="">
-							
 						</b-modal>
 
+						<!-- clothes dialog -->
+            <b-modal class="voices" hide-footer scrollable style="margin-top:20;" id="modal-xl" size="xl" v-model="activeDlgClothes">
+							<img src="../assets/clothes.png" alt="">
+						</b-modal>
+
+						<!-- map dialog -->
+            <b-modal class="voices" hide-footer scrollable style="margin-top:20;" id="modal-xl" size="xl" v-model="activeDlgMap">
+							<img src="../assets/map.jpg" alt="">
+						</b-modal>
 					</div>
 
 				</div>
@@ -52,31 +59,48 @@
 
 			<!-- footer -->
 			<div id="footer">
-				<div id="socialmedia">
-					<h5>FOLLOW US</h5>
+        <div id="footercontent">
 					<vs-row justify="space-between">
-						<vs-button icon color="#333333">
-							<i class='bx bxl-facebook-square'></i>
-						</vs-button>
-						<vs-button icon color="#333333">
-							<i class='bx bxl-linkedin-square'></i>
-						</vs-button>
-						<vs-button icon color="#333333">
-							<i class='bx bxl-instagram'></i>
-						</vs-button>
-						<vs-button icon color="#333333">
-							<i class='bx bxl-youtube'></i>
-						</vs-button>
+            <vs-col :key="index" vs-type="flex" vs-justify="center" vs-align="center" w="4">
+              <vs-row><h5>NEWSLETTER</h5></vs-row>
+              <vs-row vs-align="left">Sign up to receive exclusive updates and context</vs-row>
+              <vs-row>
+                <vs-button border icon color="rgb(59,222,200)">
+                  <i class='bx bxl-facebook-square'></i>
+                </vs-button>
+                <vs-button border icon color="rgb(59,222,200)">
+                  <i class='bx bxl-linkedin-square'></i>
+                </vs-button>
+                <vs-button border icon color="rgb(59,222,200)">
+                  <i class='bx bxl-instagram'></i>
+                </vs-button>
+                <vs-button border icon color="rgb(59,222,200)">
+                  <i class='bx bxl-youtube'></i>
+                </vs-button>
+              </vs-row>
+            </vs-col>
+            <vs-col :key="index" vs-type="flex" vs-justify="center" vs-align="center" w="4">
+              <vs-row><h5>Customer Service</h5></vs-row>
+              <vs-row>Shipping Service</vs-row>
+              <vs-row>Returns & Exchanges</vs-row>
+              <vs-row>Gifts</vs-row>
+              <vs-row>Legal area</vs-row>
+              <vs-row>FAQS</vs-row>
+              <vs-row>Contact us</vs-row>
+            </vs-col>
+            <vs-col :key="index" vs-type="flex" vs-justify="center" vs-align="center" w="4">
+              <vs-row><h5>THE COMPANY</h5></vs-row>
+              <vs-row>About RC world</vs-row>
+              <vs-row>RC Blogs</vs-row>
+              <vs-row>Corporate</vs-row>
+              <vs-row>Careers</vs-row>
+              <vs-row>Privacy & Cookie Policy</vs-row>
+            </vs-col>
 					</vs-row>
-				</div>
-
-
-
+        </div>
 
 			</div>
-
 		</div>
-
 
 		<!-- bars -->
 		<div>
@@ -84,21 +108,15 @@
 				<template #left>
 					<vs-button @click="activeSidebar = !activeSidebar" flat icon color="#ff202f">
 						<i class='bx bx-menu'></i>
-
 					</vs-button>
 					<h5>Menu</h5>
-
-
 				</template>
 
-
 				<template #right>
-
 					<vs-button icon color="#333333">
 						<i class='bx bx-search-alt-2'></i>
 						Search
 					</vs-button>
-
 
 					<vs-button transparent color="#ffffff">
 						Contact
@@ -109,14 +127,11 @@
 					<vs-button transparent color="#ffffff">
 						Sign In
 					</vs-button>
-
 					<vs-button icon color="#333333">
 						<i class='bx bx-cart'></i>
 					</vs-button>
-
 				</template>
 			</vs-navbar>
-
 
 			<!-- sidebar -->
 			<vs-sidebar
@@ -126,8 +141,8 @@
 				textWhite
 				absolute
 				v-model="active"
-				:open.sync="activeSidebar"
-			>
+				:open.sync="activeSidebar">
+
 				<template #logo>
 				<!-- ...img logo -->
 				</template>
@@ -143,14 +158,17 @@
 						</vs-sidebar-item>
 					</template>
 
-					<vs-sidebar-item id="FRAGRANCE">
-						FRAGRANCE OF RC
+					<vs-sidebar-item id="FRAGRANCE"">
+            <a v-on:click="showDlgPerfume">FRAGRANCE OF RC</a>
 					</vs-sidebar-item>
+
 					<vs-sidebar-item id="SKIN">
-						SKIN VIDEO
+            <a v-on:click="showDlgSkin">SKIN VIDEO</a>
 					</vs-sidebar-item>
+
 					<vs-sidebar-item id="VOICES">
-						VOICES
+            <a v-on:click="showDlgVoices">VOICES</a>
+						
 					</vs-sidebar-item>
 					<vs-sidebar-item id="2021 F/W COLLECTION">
 						2021 F/W COLLECTION
@@ -228,7 +246,7 @@
 					</template>
 
 					<vs-sidebar-item id="CLOTHING">
-						CLOTHING
+            <a v-on:click="showDlgClothes">CLOTHING</a>
 					</vs-sidebar-item>
 					<vs-sidebar-item id="BAGS">
 						BAGS
@@ -342,35 +360,58 @@
 						YOUR PRIVATE APPOINTMENT
 					</vs-sidebar-item>
 				</vs-sidebar-group>
-				
-				<!-- RC HERITAGE -->
+
+
+				<!-- World Of Roberto Cavalli -->
 				<vs-sidebar-group>
 					<template #header>
 						<vs-sidebar-item arrow>
 							<template #icon>
 								<i class='bx bx-circle'></i>
 							</template>
-							RC HERITAGE
+              World Of Roberto Cavalli
 						</vs-sidebar-item>
 					</template>
-					<vs-sidebar-item id="FOUNDER">
-						THE FOUNDER
+					<vs-sidebar-item id="HERITAGE">
+            RC HERITAGE
 					</vs-sidebar-item>
-					<vs-sidebar-item id="HISTORY">
-						THE HISTORY OF RC
+					<vs-sidebar-item id="LIFESTYLE">
+            RC LIFESTYLE
 					</vs-sidebar-item>
-					<vs-sidebar-item id="FAMILY">
-						RC STAR FAMILY
+					<vs-sidebar-item id="HOME">
+            RC HOME
 					</vs-sidebar-item>
+					<vs-sidebar-item id="NEWS">
+            RC NEWS
+					</vs-sidebar-item>
+				</vs-sidebar-group>
+				
+				<!-- BOUTIQUES -->
+				<vs-sidebar-group>
+					<template #header>
+						<vs-sidebar-item>
+							<template #icon>
+								<i class='bx bx-location-plus'></i>
+							</template>
+              <a v-on:click="showDlgMap">BOUTIQUES</a>
+						</vs-sidebar-item>
+					</template>
 				</vs-sidebar-group>
 
 				<template #footer>
-					<vs-button transparent color="#ffffff" v-on:click="openblog()">
-						<h3>ROBERTO CAVALLI BLOG</h3>
-					</vs-button>
-
+          <vs-row w="12">
+            <vs-col vs-type="flex" w="12">
+              <a v-on:click="switchLanguage">LANGUAGE : {{language}}</a>
+            </vs-col>
+          </vs-row>
+          <vs-row>
+            <vs-col vs-type="flex" w="12">
+              <a v-on:click="openblog">ROBERTO CAVALLI BLOG</a>
+            </vs-col>
+          </vs-row>
 
 				</template>
+
 			</vs-sidebar>
 		</div>
 	</div>
@@ -378,37 +419,61 @@
 
 
 <script>
-
-
 	// fix the font 
 	// shopping cart right side of sign-in button x
 	// perfume video change
 
-
 	export default {
-		// name of component
 		name: 'DripHub',
 
-		// props passed by parent component
 		props: {
 			msg: String,
 		},
 
-		// variables
 		data() {
 			return {
 				// active: 'primary'
 				active: 'home',
 				activeSidebar: false,
-				dialogactive: false,
-				dialogactive2: false
+				activeDlgPerfume: false,
+				activeDlgSkin: false,
+				activeDlgVoices: false,
+				activeDlgClothes: false,
+				activeDlgMap: false,
+        language: "EN",
 			}
 		},
 
 		methods: {
+      switchLanguage: function() {
+        if (this.language == "EN") 
+          this.language = "IT"
+        else
+          this.language = "EN"
+      },
+			showDlgPerfume: function(){
+				this.activeSidebar = false
+        this.activeDlgPerfume = true
+			},
+			showDlgVoices: function(){
+				this.activeSidebar = false
+        this.activeDlgVoices = true
+			},
+			showDlgSkin: function(){
+				this.activeSidebar = false
+        this.activeDlgSkin = true
+			},
+			showDlgClothes: function(){
+				this.activeSidebar = false
+        this.activeDlgClothes = true
+			},
+			showDlgMap: function(){
+				this.activeSidebar = false
+        this.activeDlgMap = true
+			},
 			openblog: function(){
 				window.open("https://robertocavalliblog.com/")
-			}
+			},
 		},
 	}
 </script>
@@ -427,7 +492,6 @@
 		display: flex;
 	}
 
-
 	#centerbutton{
 		margin: auto;
 	}
@@ -435,8 +499,6 @@
 	.mainContent {
 		padding-top: 0px;
 	}
-
-
 
 	.videobg {
 		/* transform: translate(-50%, 50%);
@@ -465,22 +527,31 @@
 
 	}
 
-
 	#sidebar {
 		margin-top: 80px;
 		height: 80%;
 	}
 	
-
 	.bars{
 		opacity: 0.8;
 	}
 
 	#footer{
 		width: 100%;
-		height: 30vh;
+		height: 50vh;
 		background-color: #111111;
 		padding-top: 20px;
+	}
+
+	#footerbutton{
+		margin: auto;
+	}
+
+	#footercontent{
+		width: 90vw;
+		margin-top:40px;
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 	#socialmedia{
@@ -490,19 +561,14 @@
 		margin-right: auto;
 	}
 
-
-
 	@font-face {
 		font-family: "ChaletComprimeCologneSixty";
 		src: url("../assets/ChaletComprimeCologneSixty.ttf");
 	}
 
-
 	* {
 		font-family: "ChaletComprimeCologneSixty";
 	}
-
-
 
 	.model{
 		margin-top: 50vh;

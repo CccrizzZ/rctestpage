@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import router from './router'
 
 // import vuesax
 import Vuesax from 'vuesax'
@@ -8,8 +9,6 @@ Vue.use(Vuesax, {
   // options here
 })
 // Vue.use(Vuesax)
-
-
 
 // import bootstrap vue
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
@@ -27,11 +26,9 @@ Vue.component('video-background', VideoBackground)
 // import boxicons
 import 'boxicons/css/boxicons.css'
 
-
-
-
 Vue.config.productionTip = false
 
 new Vue({
+  router,
   render: h => h(App),
 }).$mount('#app')
