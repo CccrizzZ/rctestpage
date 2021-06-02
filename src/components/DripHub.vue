@@ -9,8 +9,8 @@
 				<div class="videobg-content">
 					<h1> {{ msg }} </h1>
 
-					<vs-button id="centerbutton" transparent color="#ffffff">
-						<h3>2021 F/W COLLECTION</h3>
+					<vs-button id="centerbutton" transparent color="#ffffff" @click="activeDlgFall2021=!activeDlgFall2021">
+            <h3>2021 F/W COLLECTION</h3>
 					</vs-button>
 					
 					<!-- fragrance dialog -->
@@ -28,10 +28,101 @@
 
 					<div class="logs">
 
+						<!-- FALL 2021 -->
+            <b-modal hide-footer hide-header class="model modelFall2021" id="modal-xl" size="xl" v-model="activeDlgFall2021">
+                <vs-row class="rowFall2021">
+                  <h3 class="textCenter">2021 F\W COLLECTION</h3>
+                </vs-row>
+                <vs-row class="rowFall2021">
+                  <h5 class="textCenter">Shop the collection by look</h5>
+                </vs-row>
+                <vs-row class="rowFall2021">
+                  <vs-col w="4">
+                      <img class="imgFall2021" @click="activeDlgLook1=!activeDlgLook1" src="../assets/LOOK1/LOOK1.png" width="100%" height="auto" alt="">
+                      <h6 class="textCenter">LOOK1</h6>
+                      <div class="textCenter">6 products</div>
+                  </vs-col>
+                  <vs-col w="4">
+                      <img class="imgFall2021" @click="activeDlgLook2=!activeDlgLook2" src="../assets/LOOK2/LOOK2.png" width="100%" height="auto" alt="">
+                      <h6>LOOK2</h6>
+                      7 products
+                  </vs-col>
+                  <vs-col w="4">
+                      <img class="imgFall2021" @click="activeDlgLook3=!activeDlgLook3" src="../assets/LOOK3/LOOK3.png" width="100%" height="auto" alt="">
+                      <h6>LOOK3</h6>
+                      5 products
+                  </vs-col>
+                </vs-row>
+                <vs-row class="rowFall2021">
+                  <vs-col offset="2" w="4">
+                      <img class="imgFall2021" @click="activeDlgLook4=!activeDlgLook4" src="../assets/LOOK4/LOOK4.png" width="100%" height="auto" alt="">
+                      <h6>LOOK4</h6>
+                      6 products
+                  </vs-col>
+                  <vs-col w="4">
+                      <img class="imgFall2021" @click="activeDlgLook5=!activeDlgLook5" src="../assets/LOOK5/LOOK5.png" width="100%" height="auto" alt="">
+                      <h6>LOOK5</h6>
+                      7 products
+                  </vs-col>
+                </vs-row>
+						</b-modal>
+
+						<!-- look dialogs -->
+						<b-modal hide-footer hide-header class="model" id="modal-xl" size="xl" v-model="activeDlgLook1">
+                  <vs-row class="rowFall2021">
+                    <img src="../assets/LOOK1/LOOK1.png" width="100%" height="auto" alt="">
+                  </vs-row>
+                  <vs-row class="rowFall2021">
+                    <vs-col w="4">
+                      <img class="imgFall2021" src="../assets/LOOK1/1.Vertical Stripes Sweater_.png" width="100%" height="auto" alt="">
+                      <h5>Vertical Stripes Sweater</h5>
+                    </vs-col>
+                    <vs-col w="4">
+                      <img class="imgFall2021" src="../assets/LOOK1/2.Zebra-Print Pleat Chino Shorts.png" width="100%" height="auto" alt="">
+                      <h5>Zebra-Print Pleat Chino Shorts</h5>
+                    </vs-col>
+                    <vs-col w="4">
+                      <img class="imgFall2021" src="../assets/LOOK1/3.Leopard-Print Sneakers.jpg" width="100%" height="auto" alt="">
+                      <h5>Leopard-Print Sneakers</h5>
+                    </vs-col>
+                    <vs-col w="4">
+                      <img class="imgFall2021" src="../assets/LOOK1/4.RC Monogram Jacquard Hat.png" width="100%" height="auto" alt="">
+                      <h5>RC Monogram Jacquard Hat</h5>
+                    </vs-col>
+                    <!--vs-col w="4">
+                      <img class="imgFall2021" src="../assets/LOOK1/5.Chain Cuff with Horses Bucket.PNG" width="100%" height="auto" alt="">
+                      <h5>Chain Cuff with Horses Bucket</h5>
+                    </vs-col-->
+                    <vs-col w="4">
+                      <img class="imgFall2021" src="../assets/LOOK1/6.Zebra-Pattern Travel Bag.png" width="100%" height="auto" alt="">
+                      <h5>Zebra-Pattern Travel Bag</h5>
+                    </vs-col>
+                  </vs-row>
+						</b-modal>
+						<b-modal hide-footer hide-header class="model" id="modal-xl" size="xl" v-model="activeDlgLook2">
+                  <vs-row class="rowFall2021">
+                    <img src="../assets/LOOK2/LOOK2.png" width="100%" height="auto" alt="">
+                  </vs-row>
+						</b-modal>
+						<b-modal hide-footer hide-header class="model" id="modal-xl" size="xl" v-model="activeDlgLook3">
+                  <vs-row class="rowFall2021">
+                    <img src="../assets/LOOK3/LOOK3.png" width="100%" height="auto" alt="">
+                  </vs-row>
+						</b-modal>
+						<b-modal hide-footer hide-header class="model" id="modal-xl" size="xl" v-model="activeDlgLook4">
+                  <vs-row class="rowFall2021">
+                    <img src="../assets/LOOK4/LOOK4.png" width="100%" height="auto" alt="">
+                  </vs-row>
+						</b-modal>
+						<b-modal hide-footer hide-header class="model" id="modal-xl" size="xl" v-model="activeDlgLook5">
+                  <vs-row class="rowFall2021">
+                    <img src="../assets/LOOK5/LOOK5.png" width="100%" height="auto" alt="">
+                  </vs-row>
+						</b-modal>
+
 						<!-- perfume dialog -->
 						<b-modal hide-footer hide-header class="model" id="modal-xl" size="xl" v-model="activeDlgPerfume">
 							<video-background id="perfume-video" :src="require('../assets/perfume.mp4')" :loop="true"></video-background>
-							
 						</b-modal>
 						
 						<!-- voices dialog -->
@@ -435,11 +526,20 @@
 				// active: 'primary'
 				active: 'home',
 				activeSidebar: false,
+
+				activeDlgFall2021: false,
 				activeDlgPerfume: false,
 				activeDlgSkin: false,
 				activeDlgVoices: false,
 				activeDlgClothes: false,
 				activeDlgMap: false,
+
+        activeDlgLook1: false,
+        activeDlgLook2: false,
+        activeDlgLook3: false,
+        activeDlgLook4: false,
+        activeDlgLook5: false,
+
         language: "EN",
 			}
 		},
@@ -451,6 +551,23 @@
         else
           this.language = "EN"
       },
+      /*
+      showDlgLook1: function() {
+				this.activeLook1 = true
+      },
+      showDlgLook2: function() {
+				this.activeLook2 = true
+      },
+      showDlgLook3: function() {
+				this.activeLook3 = true
+      },
+      showDlgLook4: function() {
+				this.activeLook4 = true
+      },
+      showDlgLook5: function() {
+				this.activeLook5 = true
+      },
+      */
 			showDlgPerfume: function(){
 				this.activeSidebar = false
         this.activeDlgPerfume = true
@@ -573,4 +690,18 @@
 	.model{
 		margin-top: 50vh;
 	}
+  .modelFall2021 {
+    background-color: white;
+  }
+  .rowFall2021 {
+    background-color: white;
+    text-align: center;
+  }
+  .imgFall2021 {
+    border: solid 2px #e3e3e3;
+  }
+
+  .textCenter {
+    margin: auto;
+  }
 </style>
